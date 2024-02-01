@@ -23,28 +23,29 @@
                 variant="flat"
             >
                 <v-list>
-                    <v-list-item
+                    <router-link
                         v-for="(sidebarItem, sidebarItemIndex) in sidebar.items"
                         :key="sidebarItem.id"
                         :value="sidebarItem"
+                        :to="`/${sidebarItem.id}`"
+                        tag="v-list-item"
                         color="primary"
                         rounded="xl"
                         class="my-1"
-                        :active="sidebarItem.id === page"
-                        @click="page = sidebarItem.id"
+                        :active-class="'active'"
                     >
                         <template v-slot:prepend>
                             <v-icon :icon="sidebarItem.icon"></v-icon>
                         </template>
 
                         <v-list-item-title v-text="sidebarItem.text"></v-list-item-title>
-                    </v-list-item>
+                    </router-link>
                 </v-list>
             </v-card>
         </v-navigation-drawer>
 
         <v-main>
-            <app-main :page="page" />
+            <router-view/>
         </v-main>
     </v-layout>
 </template>
@@ -63,7 +64,6 @@
                 title : '[YourName]',
                 isDark: true,
                 drawer: true,
-                page  : 'home',
                 sidebar: {
                     items: [
                         { id: 'home'   , text: 'Home'      , icon: 'mdi-home'         },
@@ -77,7 +77,7 @@
 
         /** COMPONENTS */
         components: {
-            'app-main': Main,
+
         },
 
         /** METHODS */
