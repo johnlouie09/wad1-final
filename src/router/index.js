@@ -28,6 +28,11 @@ const router = createRouter({
         {
             path: '/contact',
             component: () => import('../pages/ContactUsPage.vue')
+        },
+
+        {
+            path: '/user/:username',
+            component: () => import('../pages/UserPostsPage.vue')
         }
     ]
 });
