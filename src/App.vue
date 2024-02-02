@@ -61,7 +61,7 @@
         /** DATA */
         data() {
             return {
-                title : '[YourName]',
+                title : "Louie's Final",
                 isDark: true,
                 drawer: true,
                 sidebar: {
